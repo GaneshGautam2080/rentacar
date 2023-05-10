@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="ISO-8859-1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <title>Users System</title>
+  <title>List Car</title>
 </head>
 <body>
   <div class="container mt-5 w-75">
-    <div th:replace="~{fragments/header :: header(list)}"></div>
-    <div class="table-responsive mt-3">
+      <div th:replace="~{fragments/header :: header(list)}"></div>
+      <div class="table-responsive mt-4">
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th scope="col">CarID</th>
+            <th scope="col">Car ID</th>
             <th scope="col">Brand</th>
             <th scope="col">Model</th>
             <th scope="col">Year</th>
             <th scope="col">KM</th>
-            <th scope="col">#</th>
-            <th scope="col">#</th>
+            <th scope="col">View</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr th:each="user : ${users}">
-            <th scope="row" th:text="${user.idUser}"></th>
-            <td th:text="${user.firstName} + ' ' + ${user.lastName}"></td>
-            <td th:text="${#strings.toUpperCase(user.username)} "></td>
-            <td th:text="${#dates.format(user.birth, 'dd-MM-yyyy')}"></td>
-            <td><a href="#">Update</a></td>
-            <td><a href="#">Delete</a></td>
+          <tr th:each="car : ${cars}">
+            <th scope="row" th:text="${car.carid}"></th>
+            <th scope="row" th:text="${car.brand}"></th>
+            <th scope="row" th:text="${car.model}"></th>
+            <th scope="row" th:text="${car.year}"></th>
+            <th scope="row" th:text="${car.km}"></th>       
+            <td><a href="#">View</a></td>
+            <td><a th:href="@{/update/} + ${car.carid}">Update</a></td>
+            <td><a th:href="@{/delete/} + ${car.carid}">Delete</a></td>
           </tr>
         </tbody>
       </table>    

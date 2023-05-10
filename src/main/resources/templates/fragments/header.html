@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="ISO-8859-1">
+  <meta name="viewport" content="width=device-width, initial-scale=0" />
+  
 </head>
 <body>
   <div th:fragment="header(option)">
-    <img src="/img/car.png">
-    <nav class="navbar navbar-expand-lg navbar-light mt-3" style="background-color:#e9ecef">
+      <img src="/img/car.png">
+    
+   
+      <nav class="navbar navbar-expand-lg navbar-light mt-2" style="background-color:#6495ED">
       <a class="navbar-brand" href="#">Rent a Car</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,20 +18,31 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item" th:classappend="${option == 'home' ? 'active': ''}">
-            <a class="nav-link" href="/">Car List   </a>
+          <li class="nav-item" th:classappend="${option == 'index' ? 'active': ''}">
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item" th:classappend="${option == 'list' ? 'active': ''}">
-            <a class="nav-link" href="/list">Customer   </a>
+            <a class="nav-link" href="/list">Car List </a>
           </li>
           <li class="nav-item" th:classappend="${option == 'new' ? 'active': ''}">
-            <a class="nav-link" href="/create">Rent   </a>
+            <a class="nav-link" href="/create">Add Car</a>
           </li>
-           <li class="nav-item" th:classappend="${option == 'new' ? 'active': ''}">
-            <a class="nav-link" href="/create">Return   </a>
+          
+          <li class="nav-item" th:classappend="${option == 'customer' ? 'active': ''}">
+            <a class="nav-link" href="/customer">Customer   </a>
           </li>
-          <li class="nav-item" th:classappend="${option == 'new' ? 'active': ''}">
-            <a class="nav-link" href="/create">Payment</a>
+          
+          <li class="nav-item" th:classappend="${option == 'create2' ? 'active': ''}">
+            <a class="nav-link" href="/create2">Add Customer</a>
+          </li>
+          <li class="nav-item" th:classappend="${option == 'rent' ? 'active': ''}">
+            <a class="nav-link" href="/rent">Rent   </a>
+          </li>
+           <li class="nav-item" th:classappend="${option == 'back' ? 'active': ''}">
+            <a class="nav-link" href="/back">Return   </a>
+          </li>
+          <li class="nav-item" th:classappend="${option == 'payment' ? 'active': ''}">
+            <a class="nav-link" href="/payment">Payment</a>
           </li>
         </ul>
       </div>

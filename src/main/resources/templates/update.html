@@ -4,33 +4,35 @@
   <meta charset="ISO-8859-1">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <title>Add Car</title>
+  <title>Update Car</title>
 </head>
 <body>
   <div class="container mt-5 w-75">
-    <div th:replace="~{fragments/header :: header(new)}"></div>
+    <div th:replace="~{fragments/header :: header(list)}"></div>
     <div class="jumbotron bg-light border border-info mt-3 py-4" style="min-height: 450px">
-      <h1 class="display-8">Add Car</h1>
-      <form action="/create" method="post">
-        <div class="form-group">
-          <label for="id">Car ID:</label>
-          <input type="number" class="form-control" id="id" name="id" placeholder="Type in Car ID" required>
+      <h1 class="display-8">Update Car</h1>
+      <form th:action="@{/update}" method="post">
+          
+         <div class="form-group">
+          <label for="id">Car Id:</label>
+          <input type="text" class="form-control" id="id" name="id" th:value="${car?.carid}" readonly>
         </div>
-        <div class="form-group">
+                
+         <div class="form-group">
           <label for="brand">Brand:</label>
-          <input type="text" class="form-control" id="brand" name="brand" placeholder="Type in Brand Name" required>
+          <input type="text" class="form-control" id="brand" name="brand" placeholder="Type in Brand Name" th:value="${car?.brand}"required>
         </div>
         <div class="form-group">
           <label for="model">Model:</label>
-          <input type="text" class="form-control" id="model" name="model" placeholder="Type in Model" required>
+          <input type="text" class="form-control" id="model" name="model" placeholder="Type in Model" th:value="${car?.model}"required>
         </div>
         <div class="form-group">
           <label for="year">Year:</label>
-          <input type="number" class="form-control" id="year" name="year" placeholder="Type in Year" required>
+          <input type="number" class="form-control" id="year" name="year" placeholder="Type in Year" th:value="${car?.year}"required>
         </div>
         <div class="form-group">
           <label for="km">Mileage:</label>
-          <input type="number" class="form-control" id="km" name="km" placeholder="Type in KM" required>
+          <input type="number" class="form-control" id="km" name="km" placeholder="Type in KM" th:value="${car?.km}"required>
         </div>
 
         <button type="submit" class="btn btn-primary mt-2" style="min-width: 100px">Save</button>
