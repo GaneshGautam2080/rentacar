@@ -29,7 +29,7 @@ public class CarDao {
 	
 	public void createCar(CarBean car) {
 		
-		String sql= "INSERT INTO LIST(CARID, BRAND, MODEL, YEAR, KM) "
+		String sql = "INSERT INTO LIST(CARID, BRAND, MODEL, YEAR, KM) "
 				+ "VALUES(?,?,?,?,?)";
 	
 		this.jdbcTemplate.update(sql, car.getCarid(), car.getBrand(),car.getModel(), car.getYear(), car.getKm());			
@@ -39,14 +39,13 @@ public class CarDao {
 		String sql = "SELECT * FROM LIST WHERE CARID = ?";
 		return this.jdbcTemplate.queryForObject(sql, new CarMapper(), carid);
 	}
-		public void updateCar(CarBean car) {
-		String sql = "UPDATE LIST SET BRAND = ?, MODEL = ?, YEAR = ?, KM = ?";
-		int status = this.jdbcTemplate.update(sql, car.getBrand(), car.getModel(), car.getYear(), car.getKm());
 		
-		if (status == 0) {
-			logger.error("Error while updating car: ", car);
+		public void updateCar(CarBean car) {
+		String sql = "UPDATE LIST SET BRAND = ?, MODEL = ?, YEAR = ?, KM = ? WHERE CARID = ?";
+		this.jdbcTemplate.update(sql, car.getBrand(), car.getModel(), car.getYear(), car.getKm(), car.getCarid());
 		}
-		}
+		
+		
 		
 		public void deleteCar(int carid) {
 		String sql = "DELETE FROM LIST WHERE CARID = ?";
